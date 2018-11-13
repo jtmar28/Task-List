@@ -7,6 +7,7 @@ loadAllEventHandlers();
 
 function loadAllEventHandlers(){
     form.addEventListener('submit', addTask);
+    list.addEventListener('click', deleteTask);
 }
 
 function addTask(e){
@@ -19,4 +20,9 @@ function addTask(e){
     li.appendChild(a);
     list.appendChild(li);
     e.preventDefault();
+}
+function deleteTask(e){
+    if(e.target.parentElement.classList.contains('delete-item')){
+        e.target.parentElement.parentElement.remove();
+    }
 }
