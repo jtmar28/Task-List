@@ -7,6 +7,7 @@ const clearTasks = document.querySelector('.clear-task');
 loadAllEventHandlers();
 
 function loadAllEventHandlers(){
+    document.addEventListener('DOMContentLoaded',getTasksFromLocalStorage);
     form.addEventListener('submit', addTask);
     list.addEventListener('click', deleteTask);
     filter.addEventListener('keyup', filterTasks);
@@ -61,6 +62,7 @@ function getTasksFromLocalStorage(){
 function deleteTask(e){
     if(e.target.parentElement.classList.contains('delete-item')){
         e.target.parentElement.parentElement.remove();
+        deleteTaskFromLocalStorage();
     }
 }
 function deleteTaskFromLocalStorage(taskItem){
@@ -92,6 +94,7 @@ function clearTaskList(){
     while(list.firstChild){
         list.removeChild(list.firstChild);
     }
+    clearTasksFromLocalStorage();
 }
 function clearTasksFromLocalStorage(){
     localStorage.clear();
